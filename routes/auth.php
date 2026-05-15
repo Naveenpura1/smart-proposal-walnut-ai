@@ -25,7 +25,13 @@ Route::middleware('guest')->group(function () {
     Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
         ->name('password.request');
 
+<<<<<<< HEAD
     Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+=======
+    // AC-23: max 5 reset requests per hour per IP (broker adds per-email throttle on top)
+    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
+        ->middleware('throttle:5,60')
+>>>>>>> 9ad783d (Initial commit)
         ->name('password.email');
 
     Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])

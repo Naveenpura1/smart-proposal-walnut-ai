@@ -25,6 +25,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+<<<<<<< HEAD
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
@@ -33,6 +34,41 @@ class UserFactory extends Factory
         ];
     }
 
+=======
+            'name'               => fake()->name(),
+            'email'              => fake()->unique()->safeEmail(),
+            'email_verified_at'  => now(),
+            'password'           => static::$password ??= Hash::make('password'),
+            'remember_token'     => Str::random(10),
+            'role'               => 'sales', // default role for factory-created users
+        ];
+    }
+
+    /** Sales Rep role state */
+    public function sales(): static
+    {
+        return $this->state(fn () => ['role' => 'sales']);
+    }
+
+    /** Admin role state */
+    public function admin(): static
+    {
+        return $this->state(fn () => ['role' => 'admin']);
+    }
+
+    /** Super-admin role state */
+    public function superAdmin(): static
+    {
+        return $this->state(fn () => ['role' => 'super-admin']);
+    }
+
+    /** No role (simulates missing/corrupt role claim — AC-8) */
+    public function noRole(): static
+    {
+        return $this->state(fn () => ['role' => null]);
+    }
+
+>>>>>>> 9ad783d (Initial commit)
     /**
      * Indicate that the model's email address should be unverified.
      */

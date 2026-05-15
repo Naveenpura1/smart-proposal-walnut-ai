@@ -127,6 +127,54 @@ return [
             'path' => storage_path('logs/laravel.log'),
         ],
 
+<<<<<<< HEAD
+=======
+        /*
+        |----------------------------------------------------------------------
+        | Security Audit Channel (AC-12)
+        |----------------------------------------------------------------------
+        | Unauthorised route access attempts are written here so they can be
+        | monitored or shipped to a SIEM without polluting the main app log.
+        */
+        'security' => [
+            'driver'               => 'daily',
+            'path'                 => storage_path('logs/security.log'),
+            'level'                => 'warning',
+            'days'                 => 90,
+            'replace_placeholders' => true,
+        ],
+
+        /*
+        |----------------------------------------------------------------------
+        | Walnut AI Integration Channel (WB-027 AC-16)
+        |----------------------------------------------------------------------
+        | All AI generation events are written here in isolation from the main
+        | application log to enable targeted monitoring and alerting.
+        |
+        | Logged events:
+        |   - Job enqueued (info)
+        |   - API attempt / retry (info / warning)
+        |   - Rate-limit 429 + Retry-After (warning)
+        |   - Timeout (error)
+        |   - Non-2xx response (error)
+        |   - Malformed / incomplete response (error)
+        |   - Fallback triggered (warning)
+        |   - Successful generation (info)
+        |   - DB write failure (critical)
+        |
+        | Sensitive fields (API key, full PII) must NEVER be logged (AC-15).
+        | Log entries contain: timestamp, proposal_id, error_type, http_status,
+        |   raw message, and a safe summary of the request payload.
+        */
+        'walnut_ai' => [
+            'driver'               => 'daily',
+            'path'                 => storage_path('logs/walnut_ai.log'),
+            'level'                => 'debug',
+            'days'                 => 30,
+            'replace_placeholders' => true,
+        ],
+
+>>>>>>> 9ad783d (Initial commit)
     ],
 
 ];

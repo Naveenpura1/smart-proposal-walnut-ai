@@ -3,6 +3,7 @@
     "name": "laravel/laravel",
     "type": "project",
     "description": "The skeleton application for the Laravel framework.",
+<<<<<<< HEAD
     "keywords": [
         "laravel",
         "framework"
@@ -12,10 +13,19 @@
         "php": "^8.3",
         "laravel/framework": "^13.7",
         "laravel/tinker": "^3.0"
+=======
+    "keywords": ["laravel", "framework"],
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "laravel/framework": "^12.0",
+        "laravel/tinker": "^2.10.1"
+>>>>>>> 9ad783d (Initial commit)
     },
     "require-dev": {
         "fakerphp/faker": "^1.23",
         "laravel/breeze": "^2.4",
+<<<<<<< HEAD
         "laravel/pail": "^1.2.5",
         "laravel/pao": "^1.0.6",
         "laravel/pint": "^1.27",
@@ -23,6 +33,14 @@
         "mockery/mockery": "^1.6",
         "nunomaduro/collision": "^8.6",
         "phpunit/phpunit": "^12.5.12"
+=======
+        "laravel/pail": "^1.2.2",
+        "laravel/pint": "^1.24",
+        "laravel/sail": "^1.58",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.6",
+        "phpunit/phpunit": "^11.5.50"
+>>>>>>> 9ad783d (Initial commit)
     },
     "autoload": {
         "psr-4": {
@@ -42,7 +60,11 @@
             "@php -r \"file_exists('.env') || copy('.env.example', '.env');\"",
             "@php artisan key:generate",
             "@php artisan migrate --force",
+<<<<<<< HEAD
             "npm install --ignore-scripts",
+=======
+            "npm install",
+>>>>>>> 9ad783d (Initial commit)
             "npm run build"
         ],
         "dev": [
@@ -50,7 +72,11 @@
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1 --timeout=0\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite --kill-others"
         ],
         "test": [
+<<<<<<< HEAD
             "@php artisan config:clear --ansi @no_additional_args",
+=======
+            "@php artisan config:clear --ansi",
+>>>>>>> 9ad783d (Initial commit)
             "@php artisan test"
         ],
         "post-autoload-dump": [
